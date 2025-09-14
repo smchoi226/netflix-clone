@@ -1,0 +1,144 @@
+name: "PR merge on time v3.3 by crong"
+
+on:
+  schedule:
+    - cron: "10 9 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  merge:
+    name: "Auto Merge on time"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Merge pull request"
+        uses: "actions/github-script@v6"
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const query = `query($owner:String!, $name:String!) {
+              repository(owner: $owner, name: $name) {
+                pullRequests(last: 100, states: OPEN) {
+                  edges {
+                    node {
+                      number
+                      headRefName
+                      baseRefName
+                      author {
+                        login
+                      }
+                      repository {
+                        name
+                      }
+                      mergeable
+                      labels(first: 10) {
+                        nodes {
+                          name
+                        }
+                      }
+                      reviews(last: 1) {
+                        nodes {
+                          state
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }`
+
+            const variables = {
+              owner: context.repo.owner,
+              name: context.repo.repo,
+            }
+
+            const {repository:{pullRequests:{edges: list}}} = await github.graphql(query, variables)
+
+            for (let {node} of list) {
+              console.log("\n----------------------------------------");
+              console.log(`PR #${node.number} 처리 시작`);
+              console.log(`PR node 정보: ${JSON.stringify(node, null, 2)}`);
+
+              if (node.baseRefName === "main") {
+                console.log(`PR #${node.number}: main 브랜치로 요청함`);
+                try {
+                  await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: node.number,
+                      body: "main 브랜치로 병합 시도"
+                  });
+                  console.log(`PR #${node.number}에 main브랜치 코멘트 추가 완료`);
+                } catch (e) {
+                  console.log(`PR #${node.number}에 main브랜치 코멘트 추가 실패:`, e);
+                }
+                continue;
+              }
+
+              const hasSkipLabel = node.labels.nodes.some(label => label.name.toLowerCase() === 'review');
+              if (hasSkipLabel) {
+                console.log(`PR #${node.number}: 'review' 라벨이 있어 병합 생략`);
+                continue;
+              }
+
+              if (node.reviews?.nodes?.[0]?.state === "CHANGES_REQUESTED") {
+                console.log(`PR #${node.number}: 변경 요청 상태, 병합 연기`);
+                try {
+                  await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: node.number,
+                      body: "변경 요청 중인 브랜치의 머지를 연기합니다."
+                  });
+                  console.log(`PR #${node.number}에 변경 요청 상태 코멘트 추가 완료`);
+                } catch (e) {
+                  console.log(`PR #${node.number}에 변경 요청 상태 코멘트 추가 실패:`, e);
+                }
+                continue;
+              }
+
+              if (node.mergeable === "CONFLICTING") {
+                try {
+                  console.log(`PR #${node.number}: 충돌상황 closed 처리 시작`);
+                  
+                  // PR 닫기 로직
+                  await github.rest.pulls.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: node.number,
+                    state: "closed"
+                  });
+                  console.log(`PR #${node.number} 충돌상황 closed 처리 완료`);
+                  
+                  // 충돌 코멘트 추가
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: node.number,
+                    body: "충돌로 인해 자동 병합이 불가능합니다."
+                  });
+                  console.log(`PR #${node.number}에 충돌 코멘트 추가 완료`);
+                  
+                  } catch (e) {
+                    console.log(`PR #${node.number}에 충돌 closed 처리 중 에러 발생:`, e);
+                  }
+              } else {
+                console.log(`PR #${node.number} 병합 시작`);
+                try {
+                  await github.rest.pulls.merge({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: node.number,
+                    merge_method: "merge"
+                  });
+                  console.log(`PR #${node.number} 병합 완료`);
+                } catch (e) {
+                  console.log(`PR #${node.number} 병합 실패:`, e);
+                }
+              }
+            }
