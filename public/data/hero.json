@@ -1,0 +1,13 @@
+{
+  "id": "hero-content",
+  "title": "킹덤",
+  "description": "조선시대 좀비 스릴러. 왕세자 이창이 역병의 비밀을 파헤치며 왕위 계승 음모와 맞서 싸운다.",
+  "image": "images/hero/hero1.png",
+  "badge": "넷플릭스 오리지널",
+  "category": "K-드라마",
+  "isNew": true,
+  "rating": "15+",
+  "year": 2019,
+  "seasons": 2,
+  "genres": ["스릴러", "드라마", "판타지"]
+}

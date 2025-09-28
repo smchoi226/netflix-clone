@@ -1,0 +1,240 @@
+{
+  "sections": [
+    {
+      "id": "trending",
+      "title": "지금 뜨는 콘텐츠",
+      "sliderOptions": {
+        "visible": 6,
+        "step": 3
+      },
+      "contents": [
+        {
+          "id": "content-1",
+          "title": "오징어 게임",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "isNew": false,
+          "rating": "18+",
+          "year": 2021
+        },
+        {
+          "id": "content-2", 
+          "title": "종이의 집: 공동경제구역",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "isNew": true,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "content-3",
+          "title": "스트레인저 씽스",
+          "image": "images/cards/card1.jpg",
+          "category": "미드",
+          "isNew": false,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "content-4",
+          "title": "위쳐",
+          "image": "images/cards/card1.jpg",
+          "category": "판타지",
+          "isNew": false,
+          "rating": "18+",
+          "year": 2019
+        },
+        {
+          "id": "content-5",
+          "title": "브리저튼",
+          "image": "images/cards/card1.jpg",
+          "category": "로맨스",
+          "isNew": true,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "content-6",
+          "title": "더 크라운",
+          "image": "images/cards/card1.jpg",
+          "category": "드라마",
+          "isNew": false,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "content-7",
+          "title": "미나리",
+          "image": "images/cards/card1.jpg",
+          "category": "영화",
+          "isNew": false,
+          "rating": "12+",
+          "year": 2020
+        },
+        {
+          "id": "content-8",
+          "title": "엑스트랙션",
+          "image": "images/cards/card1.jpg",
+          "category": "액션",
+          "isNew": false,
+          "rating": "18+",
+          "year": 2020
+        }
+      ]
+    },
+    {
+      "id": "korean",
+      "title": "한국 콘텐츠",
+      "sliderOptions": {
+        "visible": 5,
+        "step": 3
+      },
+      "contents": [
+        {
+          "id": "korean-1",
+          "title": "사랑의 불시착",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "isNew": false,
+          "rating": "15+",
+          "year": 2019
+        },
+        {
+          "id": "korean-2",
+          "title": "이태원 클라쓰",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마", 
+          "isNew": false,
+          "rating": "15+",
+          "year": 2020
+        },
+        {
+          "id": "korean-3",
+          "title": "킹덤",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "isNew": false,
+          "rating": "18+",
+          "year": 2019
+        },
+        {
+          "id": "korean-4",
+          "title": "기생충",
+          "image": "images/cards/card1.jpg",
+          "category": "영화",
+          "isNew": false,
+          "rating": "15+",
+          "year": 2019
+        },
+        {
+          "id": "korean-5",
+          "title": "승리호",
+          "image": "images/cards/card1.jpg",
+          "category": "SF",
+          "isNew": false,
+          "rating": "12+",
+          "year": 2021
+        },
+        {
+          "id": "korean-6",
+          "title": "지옥",
+          "image": "images/cards/card1.jpg",
+          "category": "스릴러",
+          "isNew": true,
+          "rating": "18+",
+          "year": 2021
+        }
+      ]
+    },
+    {
+      "id": "top10",
+      "title": "오늘 대한민국의 TOP 10 시리즈",
+      "sliderOptions": {
+        "visible": 5,
+        "step": 2
+      },
+      "contents": [
+        {
+          "id": "top10-1",
+          "title": "오징어 게임",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 1,
+          "isNew": false,
+          "rating": "18+",
+          "year": 2021
+        },
+        {
+          "id": "top10-2",
+          "title": "지금 우리 학교는",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 2,
+          "isNew": true,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "top10-3",
+          "title": "사업제안서",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 3,
+          "isNew": true,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "top10-4",
+          "title": "이상한 변호사 우영우",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 4,
+          "isNew": true,
+          "rating": "12+",
+          "year": 2022
+        },
+        {
+          "id": "top10-5",
+          "title": "환혼",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 5,
+          "isNew": true,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "top10-6",
+          "title": "그 해 우리는",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 6,
+          "isNew": false,
+          "rating": "15+",
+          "year": 2021
+        },
+        {
+          "id": "top10-7",
+          "title": "스물다섯 스물하나",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 7,
+          "isNew": false,
+          "rating": "15+",
+          "year": 2022
+        },
+        {
+          "id": "top10-8",
+          "title": "갯마을 차차차",
+          "image": "images/cards/card1.jpg",
+          "category": "K-드라마",
+          "rank": 8,
+          "isNew": false,
+          "rating": "15+",
+          "year": 2021
+        }
+      ]
+    }
+  ]
+}

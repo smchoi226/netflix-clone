@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix 클론</title>
+  <meta name="description" content="Netflix 클론 - TypeScript와 Vite로 구현한 스트리밍 서비스">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page">
+    <!-- 헤더 -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-left">
+          <div class="logo">NETFLIX</div>
+          <ul class="nav-menu">
+            <li><a href="#">홈</a></li>
+            <li><a href="#">시리즈</a></li>
+            <li><a href="#">영화</a></li>
+            <li><a href="#">NEW! 요즘 대세 콘텐츠</a></li>
+            <li><a href="#">내가 찜한 콘텐츠</a></li>
+            <li><a href="#">언어별로 찾아보기</a></li>
+          </ul>
+        </div>
+        <div class="nav-right">
+          <button class="search-btn" aria-label="검색">🔍</button>
+          <span class="kids-text">키즈</span>
+          <button class="notification-btn" data-modal="notifications" aria-label="알림">🔔</button>
+          <button data-modal="profile" aria-label="프로필 메뉴">
+            <img src="images/profile/profile.jpg" alt="프로필" class="profile-img">
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+      <div class="hero-content">
+        <!-- 동적으로 로드됨 -->
+      </div>
+    </section>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+      <!-- 지금 뜨는 콘텐츠 -->
+      <section class="category-section" data-slider data-visible="6" data-step="3">
+        <h2 class="section-title">지금 뜨는 콘텐츠</h2>
+        <div class="card-row">
+          <!-- 동적으로 로드됨 -->
+        </div>
+      </section>
+
+      <!-- 한국 콘텐츠 -->
+      <section class="category-section" data-slider data-visible="5" data-step="3">
+        <h2 class="section-title">한국 콘텐츠</h2>
+        <div class="card-row">
+          <!-- 동적으로 로드됨 -->
+        </div>
+      </section>
+
+      <!-- TOP 10 -->
+      <section class="category-section top10" data-slider data-visible="5" data-step="2">
+        <h2 class="section-title">오늘 대한민국의 TOP 10 시리즈</h2>
+        <div class="card-row">
+          <!-- 동적으로 로드됨 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">회사 정보</a>
+          <a href="#">고객 센터</a>
+          <a href="#">미디어 센터</a>
+          <a href="#">이용 약관</a>
+          <a href="#">개인정보 처리방침</a>
+          <a href="#">쿠키 설정</a>
+          <a href="#">회사 정보</a>
+          <a href="#">문의하기</a>
+          <a href="#">속도 테스트</a>
+          <a href="#">법적 고지</a>
+          <a href="#">Netflix 오리지널</a>
+        </div>
+        <div class="copyright">
+          © 2024 Netflix Clone. 이 사이트는 학습 목적으로 제작되었습니다.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 모달 포털 -->
+  <div id="modal-root"></div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
